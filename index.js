@@ -83,7 +83,7 @@ class Core {
 
     UpdateRecordBySubDomain(params) {
         let {
-            SubDomain, Type, TargetValue
+            SubDomain, Type = "A", TargetValue
         } = params;
 
         return new Promise(async (resolve, reject) => {
