@@ -6,7 +6,7 @@ const SubDomain = "<sub.domain.name>";
 const Type = "A";
 const TargetValue = "1.1.1.1";
 
-(async function main() {
+(async function () {
     try {
         const client = AliyunDNS.createClient(accessKeyId, accessKeySecret, true);
         console.log(

@@ -99,7 +99,7 @@ class Core {
                 ) {
                     resolve({
                         Status: false,
-                        Message: "Cannot find sub domain infomation"
+                        Message: "SubDomain infomation not found"
                     });
                     return;
                 }

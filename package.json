@@ -1,15 +1,23 @@
 {
-  "name": "node-aliyun-dns",
+  "name": "@mhycy/node-aliyun-dns",
   "version": "1.0.0",
   "description": "Aliyun dns api wrapper for node.js",
   "main": "index.js",
   "scripts": {
     "test:record-update": "node ./test/record-update.js"
   },
-  "author": "mhycy",
-  "license": "MIT",
   "dependencies": {
     "@alicloud/pop-core": "^1.7.7",
     "chalk": "^2.4.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhycy/node-aliyun-dns.git"
+  },
+  "author": "mhycy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mhycy/node-aliyun-dns/issues"
+  },
+  "homepage": "https://github.com/mhycy/node-aliyun-dns#readme"
 }
