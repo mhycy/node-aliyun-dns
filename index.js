@@ -1,15 +1,24 @@
-import Core from '@alicloud/pop-core';
-import { domainToASCII } from 'url';
-import { EILSEQ } from 'constants';
+const util = require('util');
+const chalk = require('chalk');
+const PopCore = require('@alicloud/pop-core');
 
-export class AliyunDNS {
-    constructor(accessKeyId, accessKeySecret) {
-        this.client = new Core({
-            accessKeyId: accessKeyId,
-            accessKeySecret: accessSecret,
+class Core {
+    constructor(accessKeyId, accessKeySecret, debug = false) {
+        this.client = new PopCore({
+            accessKeyId,
+            accessKeySecret,
             endpoint: 'https://alidns.aliyuncs.com',
             apiVersion: '2015-01-09'
         });
+
+        if(debug) {
+            this.debug = (operation, params, result) => {
+                console.log(chalk.blue(`[${operation}][Params]: \n`), util.inspect(params, true, null, true));
+                console.log(chalk.blue(`[${operation}][Result]: \n`), util.inspect(result, true, null, true));
+            };
+        } else {
+            this.debug = () => {};
+        }
 
         [
             // 域名管理接口
@@ -61,11 +70,15 @@ export class AliyunDNS {
                     this.client
                         .request(operation, params, { method: 'POST' })
                         .then((result) => {
-                            return result;
-                        }, (error) => { reject(error); });
+                            this.debug(operation, params, result);
+                            resolve(result);
+                        }, (error) => {
+                            this.debug(operation, params, error);
+                            reject(error);
+                        });
                 })
             }
-        });
+        }.bind(this));
     }
 
     UpdateRecordBySubDomain(params) {
@@ -88,6 +101,7 @@ export class AliyunDNS {
                         Status: false,
                         Message: "Cannot find sub domain infomation"
                     });
+                    return;
                 }
                 
                 let { RR, Value, RecordId } = domainRecordInfo.DomainRecords.Record[0];
@@ -96,6 +110,7 @@ export class AliyunDNS {
                         Status: true,
                         Message: "Target value equle current value"
                     });
+                    return;
                 }
                 
                 // 更新域名记录
@@ -108,11 +123,13 @@ export class AliyunDNS {
                         Status: true,
                         Result: { ...domainRecordUpdateResult }
                     });
+                    return;
                 } else {
                     resolve({
                         Status: false,
                         ...domainRecordUpdateResult
                     });
+                    return;
                 }
             } catch (error) {
                 reject(error);
@@ -121,6 +138,10 @@ export class AliyunDNS {
     }
 }
 
-export function createClient(accessKeyId, accessKeySecret) {
-    return new AliyunDNS(accessKeyId, accessKeySecret);
+function createClient(accessKeyId, accessKeySecret, debug = false) {
+    return new Core(accessKeyId, accessKeySecret, debug);
+}
+
+module.exports = {
+    Core, createClient
 }

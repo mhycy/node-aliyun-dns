@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "Aliyun dns api wrapper for node.js",
   "main": "index.js",
+  "scripts": {
+    "test:record-update": "node ./test/record-update.js"
+  },
   "author": "mhycy",
   "license": "MIT",
   "dependencies": {
-    "@alicloud/pop-core": "^1.7.7"
+    "@alicloud/pop-core": "^1.7.7",
+    "chalk": "^2.4.2"
   }
 }
