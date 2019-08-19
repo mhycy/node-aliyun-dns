@@ -1,6 +1,6 @@
 {
-  "name": "@mhycy/node-aliyun-dns",
-  "version": "1.0.2",
+  "name": "@mhycy/aliyun-dns",
+  "version": "1.0.0",
   "description": "Aliyun dns api wrapper for node.js",
   "main": "index.js",
   "scripts": {

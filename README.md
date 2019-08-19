@@ -1,4 +1,4 @@
-# @mhycy/node-aliyun-dns
+# @mhycy/aliyun-dns
 Aliyun dns api wrapper for node.js
 
 ## Install
