@@ -1,4 +1,4 @@
-const AliyunDNS = require('./index.js');
+const AliyunDNS = require('../index.js');
 
 const accessKeyId = "<accessKeyId>";
 const accessKeySecret = "<accessKeySecret>";
