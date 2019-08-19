@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/mhycy/node-aliyun-dns/issues"
   },
-  "homepage": "https://github.com/mhycy/node-aliyun-dns#readme"
+  "homepage": "https://github.com/mhycy/node-aliyun-dns#readme",
+  "keywords": [
+    "aliyun",
+    "dns",
+    "aliyun-dns"
+  ]
 }
