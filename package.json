@@ -1,0 +1,11 @@
+{
+  "name": "node-aliyun-dns",
+  "version": "1.0.0",
+  "description": "Aliyun dns api wrapper for node.js",
+  "main": "index.js",
+  "author": "mhycy",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.7"
+  }
+}
